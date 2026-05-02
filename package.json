@@ -1,26 +1,22 @@
 {
-  "name": "app-salon-php-mvc-sass",
+  "name": "uptask",
   "version": "1.0.0",
-  "description": "AppSalon - Curso Desarrollo web Completo",
-  "author": "Juan De la torre @codigoconjuan",
+  "description": "UpTask",
+  "author": "Tu nombre",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "imagen": "gulp imagen",
-    "build": "gulp build",
-    "dev": "gulp",
-    "servidor": "gulp servidor"
+    "dev": "vite",
+    "build": "vite build",
+    "imagen": "gulp imagen"
   },
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^3.0.4",
     "glob": "^13.0.0",
     "gulp": "^5.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^6.0.1",
-    "gulp-terser": "^2.1.0",
-    "sass": "^1.97.2",
-    "sharp": "^0.34.5"
+    "sass": "^1.75.0",
+    "sharp": "^0.34.5",
+    "vite": "^5.0.0",
+    "vite-plugin-full-reload": "^1.1.0"
   }
 }
