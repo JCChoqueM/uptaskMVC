@@ -1,0 +1,5 @@
+vendor
+node_modules
+includes/.env
+.vscode
+FETCH_HEAD

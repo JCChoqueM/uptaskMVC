@@ -1,0 +1,68 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: uptask_php
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/apache.conf:/etc/apache2/sites-available/000-default.conf
+    working_dir: /var/www/html
+    command: >
+      bash -c "
+        if [ ! -d 'vendor' ]; then
+          echo '>>> Instalando dependencias de Composer...' &&
+          composer install --no-interaction --prefer-dist
+        else
+          echo '>>> vendor/ ya existe, saltando Composer'
+        fi &&
+
+        if [ ! -d 'node_modules' ]; then
+          echo '>>> Instalando dependencias de NPM...' &&
+          npm install
+        else
+          echo '>>> node_modules/ ya existe, saltando NPM'
+        fi &&
+
+        echo '>>> Todo listo. Iniciando Apache...' &&
+        apache2-foreground
+      "
+    depends_on:
+      - mysql
+    networks:
+      - uptask_network
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: uptask_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: uptask
+    volumes:
+      - uptask_mysql_data:/var/lib/mysql
+      - .:/docker-entrypoint-initdb.d/host
+    ports:
+      - "3308:3306"
+    networks:
+      - uptask_network
+    restart: unless-stopped
+    command: >
+      bash -c "
+        if [ -f '/docker-entrypoint-initdb.d/host/uptask_db.sql' ]; then
+          echo '>>> SQL encontrado, copiando...' &&
+          cp /docker-entrypoint-initdb.d/host/uptask_db.sql /docker-entrypoint-initdb.d/uptask_db.sql
+        else
+          echo '>>> Sin SQL, iniciando con base de datos vacía'
+        fi &&
+        docker-entrypoint.sh mysqld
+      "
+
+volumes:
+  uptask_mysql_data:
+
+networks:
+  uptask_network:
+    driver: bridge
