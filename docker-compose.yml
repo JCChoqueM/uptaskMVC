@@ -6,7 +6,7 @@ services:
     container_name: uptask_php
     ports:
       - "8082:80"
-      - "5173:5173"  # ← agregar este puerto para Vite
+      - "5173:5173"
     volumes:
       - .:/var/www/html
       - ./docker/apache.conf:/etc/apache2/sites-available/000-default.conf
@@ -27,7 +27,8 @@ services:
           echo '>>> node_modules/ ya existe, saltando NPM'
         fi &&
 
-        echo '>>> Todo listo. Iniciando Apache...' &&
+        echo '>>> Iniciando Apache y Vite...' &&
+        npm run dev &
         apache2-foreground
       "
     depends_on:
