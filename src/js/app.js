@@ -1,1 +1,3 @@
-console.log(2 + 2)
+import '../scss/app.scss'
+
+import './paginas/login.js'
