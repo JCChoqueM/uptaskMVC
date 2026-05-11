@@ -8,7 +8,7 @@ class LoginController
 {
     public static function login(Router $router)
     {
-        echo "Desde logiaaan";
+        echo "Desde login";
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
@@ -30,21 +30,21 @@ class LoginController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
-
+//Formulario de olvide mi password
     public static function olvide()
     {
         echo "Desde olvide";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
-
+ //Colocar el nuevo password
     public static function reestablecer()
     {
         echo "Desde reestablecer";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
-
+//Muestra el mensaje de confirmación
     public static function mensaje()
     {
         echo "Desde mensaje";
