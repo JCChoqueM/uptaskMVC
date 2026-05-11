@@ -10,25 +10,7 @@ services:
       - .:/var/www/html
       - ./docker/apache.conf:/etc/apache2/sites-available/000-default.conf
     working_dir: /var/www/html
-    command: >
-      bash -c "
-        if [ ! -d 'vendor' ]; then
-          echo '>>> Instalando dependencias de Composer...' &&
-          composer install --no-interaction --prefer-dist
-        else
-          echo '>>> vendor/ ya existe, saltando Composer'
-        fi &&
-
-        if [ ! -d 'node_modules' ]; then
-          echo '>>> Instalando dependencias de NPM...' &&
-          npm install
-        else
-          echo '>>> node_modules/ ya existe, saltando NPM'
-        fi &&
-
-        echo '>>> Todo listo. Iniciando Apache...' &&
-        apache2-foreground
-      "
+    command: apache2-foreground
     depends_on:
       - mysql
     networks:

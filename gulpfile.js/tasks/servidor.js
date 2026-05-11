@@ -8,7 +8,7 @@ const bs = browserSync.create();
  */
 export function servidor(done) {
     bs.init({
-        proxy: 'http://aprende-php-mvc.test/',
+        proxy: 'http://localhost:8082/',
         port: 3000,
         open:true,
         //ui: false,

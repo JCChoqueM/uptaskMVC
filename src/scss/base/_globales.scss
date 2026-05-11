@@ -34,10 +34,9 @@ a {
 h1,
 h2,
 h3 {
-
   margin: 0 0 5rem 0;
-   font-weight: 300;
-      text-align: center;
+  font-weight: 300;
+  text-align: center;
 }
 h1 {
   font-size: 4rem;
@@ -48,9 +47,23 @@ h2 {
 h3 {
   font-size: 3rem;
 }
-img,picture {
+img,
+picture {
   max-width: 100%;
   width: 100%;
   height: auto;
   display: block;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: v.$fuente_principal;
+  background-color: #cd11e6;
+
+  &.fijar-body {
+    overflow: hidden;
+  }
+  &.body-scroll {
+    padding-top: 8.6rem;
+  }
 }

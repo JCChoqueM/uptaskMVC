@@ -1,0 +1,9 @@
+DB_HOST=mysql
+DB_USER=root
+DB_PASS=1234
+DB_NAME=uptask
+EMAIL_HOST=sandbox.smtp.mailtrap.io
+EMAIL_PORT=2525
+EMAIL_USER=8fefb8f9915fa9
+EMAIL_PASS=ed2804ec46bcf4
+APP_URL=http://localhost:8082

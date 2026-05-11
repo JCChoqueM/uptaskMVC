@@ -31,4 +31,4 @@ export { css, js, jsSubfolders, imagenes, servidor };
 // Tareas compuestas
 export const imagen = series(imagenes);
 export const build = series(css, js, jsSubfolders);
-export default series(css, js, jsSubfolders, imagenes, dev);
+export default series(css, js, jsSubfolders, imagenes,servidor, dev);
