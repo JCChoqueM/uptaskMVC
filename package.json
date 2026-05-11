@@ -9,8 +9,8 @@
     "dev": "vite",
     "build": "vite build",
     "imagen": "gulp imagen",
-    "prod": "sed -i 's/ENVIRONMENT=development/ENVIRONMENT=production/' .env && vite build",
-    "start": "sed -i 's/ENVIRONMENT=production/ENVIRONMENT=development/' .env && vite"
+    "start": "sed -i 's/ENVIRONMENT=production/ENVIRONMENT=development/' .env && vite",
+    "prod": "sed -i 's/ENVIRONMENT=development/ENVIRONMENT=production/' .env && vite build"
   },
   "license": "ISC",
   "devDependencies": {

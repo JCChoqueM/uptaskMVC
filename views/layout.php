@@ -1,3 +1,13 @@
+<?php
+$isDev = $_ENV['ENVIRONMENT'] === 'development';
+
+if (!$isDev) {
+    $manifest = json_decode(
+        file_get_contents(__DIR__ . '/../public/build/.vite/manifest.json'),
+        true
+    );
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,27 +19,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Open+Sans&display=swap" rel="stylesheet">
 
-    <?php if ($_ENV['ENVIRONMENT'] === 'development') : ?>
+    <?php if ($isDev): ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <?php else : ?>
-        <?php
-            $manifest = json_decode(file_get_contents(__DIR__ . '/../public/build/.vite/manifest.json'), true);
-        ?>
+    <?php else: ?>
         <link rel="stylesheet" href="/build/<?= $manifest['src/scss/app.scss']['file'] ?>">
-    <?php endif; ?>
+    <?php endif ?>
 </head>
 
 <body>
 
-    <?php echo $contenido; ?>
+    <?= $contenido ?>
 
-    <?php if ($_ENV['ENVIRONMENT'] === 'development') : ?>
+    <?php if ($isDev): ?>
         <script type="module" src="http://localhost:5173/src/js/app.js"></script>
-    <?php else : ?>
+    <?php else: ?>
         <script src="/build/<?= $manifest['src/js/app.js']['file'] ?>"></script>
-    <?php endif; ?>
+    <?php endif ?>
 
-    <?php echo $script ?? ''; ?>
+    <?= $script ?? '' ?>
+
 </body>
-
 </html>

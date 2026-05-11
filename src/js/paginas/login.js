@@ -3,5 +3,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if(!titulo) return;
 
-    titulo.textContent = 'Bienvenido a Uptask 🚀';
+    titulo.textContent = 'Bienvenido aaaa Uptask 🚀';
 });

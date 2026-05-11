@@ -8,7 +8,7 @@ class LoginController
 {
     public static function login(Router $router)
     {
-        echo "Desde login";
+        echo "Desde logiaaan";
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
