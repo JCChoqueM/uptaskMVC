@@ -4,7 +4,12 @@ import FullReload from 'vite-plugin-full-reload';
 export default defineConfig({
     publicDir: false,    // ← aquí, fuera de build
     plugins: [
-        FullReload(['**/*.php'])
+        FullReload(['**/*.php'],
+            {
+                delay: 1000
+            }
+
+        )
     ],
     css: {
         devSourcemap: true,
@@ -19,7 +24,7 @@ export default defineConfig({
         port: 5173,
         watch: {
             usePolling: true,
-            interval: 500,
+            interval: 1500,
             ignored: ['**/vendor/**', '**/node_modules/**']
         }
     },

@@ -8,13 +8,16 @@ class LoginController
 {
     public static function login(Router $router)
     {
-        echo "Desde login";
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         //Render a la vista
-        $router->render('auth/login',
-            []
+        $router->render(
+            'auth/login',
+            [
+                'titulo' => 'Iniciar Sesión'
+            ]
         );
     }
     public static function logout()
@@ -22,29 +25,32 @@ class LoginController
         echo "Desde login";
     }
 
-    public static function crear()
+    public static function crear(Router $router)
     {
-
-        echo "Desde crearrr";
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
+        $router->render(
+            'auth/crear',
+            [
+                'titulo' => 'Crea tu cuenta en UpTask',
+            ]
+        );
     }
-//Formulario de olvide mi password
+    //Formulario de olvide mi password
     public static function olvide()
     {
         echo "Desde olvide";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
- //Colocar el nuevo password
+    //Colocar el nuevo password
     public static function reestablecer()
     {
         echo "Desde reestablecer";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
-//Muestra el mensaje de confirmación
+    //Muestra el mensaje de confirmación
     public static function mensaje()
     {
         echo "Desde mensaje";

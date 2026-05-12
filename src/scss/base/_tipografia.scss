@@ -1,24 +1,21 @@
 @use 'variables' as v;
 
 h1, h2, h3 {
-    font-family: v.$fuente_principal;
+    font-family: v.$fuente_headings;
     margin: 0 0 calc(v.$separacion / 2) 0 ;
     font-weight: 900;
-    color: v.$blanco;
-    text-align: center;
 }
-
 h1 {
-    font-size: 4rem;
+    font-size: 6rem;
 }
 h2 {
-    font-size: 3.6rem;
+    font-size: 5rem;
 }
 h3 {
-    font-size: 3rem;
-    text-align: center;
+    font-size: 4rem;
 }
 p {
-    color: v.$blanco;
     font-size: 2rem;
+    color: v.$gris;
+    line-height: 1.8;
 }
