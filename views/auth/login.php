@@ -1,11 +1,13 @@
-<div class="contenedor">
-    <h1>Uptask</h1>
-    <p>Crea y administra tus proyectos </p>
+<div class="contenedor crear">
+    <h1 class="uptask">UpTask</h1>
+    <p class="tagline">Crea y administra tus proyectos </p>
 
     <!--section contenedor-sm -->
     <div class="contenedor-sm">
-        <p class="descripcion pagina">Iniciar Sesión</p>
+        <p class="descripcion-pagina">Iniciar Sesión</p>
+        <!-- BLOQUE formulario[inicio]-->
         <form action="/" method="POST" class="formulario">
+            <!-- subBloque  email[inicio]-->
             <div class="campo">
                 <label for="email">Email</label>
                 <input
@@ -14,6 +16,9 @@
                     placeholder="Tu Email"
                     name="email">
             </div>
+            <!-- !subBloque fin email - [fin]-->
+
+            <!-- subBloque2  Password[inicio] -->
             <div class="campo">
                 <label for="password">Password</label>
                 <input
@@ -22,8 +27,12 @@
                     placeholder="Tu Password"
                     name="password">
             </div>
+            <!-- !subBloque2  fin - Password[fin] -->
+
             <input type="submit" class="boton" value="Iniciar Sesión">
         </form>
+        <!-- !BLOQUE fin - formulario[fin]-->
+
     </div>
     <div class="acciones">
         <a href="/crear">Aun no tienes una cuenta? Obtener una</a>
