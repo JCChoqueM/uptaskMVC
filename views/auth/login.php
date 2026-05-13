@@ -1,4 +1,4 @@
-<div class="contenedor crear">
+<div class="contenedor login">
     <h1 class="uptask">UpTask</h1>
     <p class="tagline">Crea y administra tus proyectos </p>
 
@@ -34,10 +34,14 @@
         <!-- !BLOQUE fin - formulario[fin]-->
 
     </div>
+
+    <!-- section2 enlaces[inicio] -->
     <div class="acciones">
         <a href="/crear">Aun no tienes una cuenta? Obtener una</a>
         <a href="/olvide">Olvidaste tu password</a>
 
     </div>
+    <!-- !section2 fin - enlaces[fin] -->
+
     <!-- !section contenedor-sm -->
 </div>
