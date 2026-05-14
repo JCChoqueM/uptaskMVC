@@ -37,11 +37,17 @@ class LoginController
         );
     }
     //Formulario de olvide mi password
-    public static function olvide()
+    public static function olvide(Router $router)
     {
-        echo "Desde olvide";
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
+        $router->render(
+            'auth/olvide',
+            [
+                'titulo' => 'Olvide mi password',
+            ]
+        );
     }
     //Colocar el nuevo password
     public static function reestablecer()
