@@ -50,11 +50,17 @@ class LoginController
         );
     }
     //Colocar el nuevo password
-    public static function reestablecer()
+    public static function reestablecer(Router $router)
     {
-        echo "Desde reestablecer";
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
+          $router->render(
+            'auth/reestablecer',
+            [
+                'titulo' => 'Olvide mi password',
+            ]
+        );
     }
     //Muestra el mensaje de confirmación
     public static function mensaje()

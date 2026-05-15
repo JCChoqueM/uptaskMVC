@@ -1,4 +1,4 @@
-<div class="contenedor recuperar">
+<div class="contenedor olvide">
 
     <?php include_once __DIR__ . '/../templates/nombre-sitio.php'; ?>
     <!--section contenedor-sm -->
