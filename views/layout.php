@@ -22,7 +22,7 @@ if (!$isDev) {
     <?php if ($isDev): ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
     <?php else: ?>
-        <link rel="stylesheet" href="/build/<?= $manifest['src/scss/app.scss']['file'] ?>">
+        <link rel="stylesheet" href="/build/<?= $manifest['src/scss/app.scss']['css'][0] ?>">
     <?php endif ?>
 </head>
 
