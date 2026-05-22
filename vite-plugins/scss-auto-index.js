@@ -23,10 +23,16 @@ function updateIndex(fileDir, fileName, action) {
         const updated = content
             .split('\n')
             .filter(line => !line.includes(importLine))
-            .join('\n');
+            .join('\n')
+            .trim();
 
-        fs.writeFileSync(indexPath, updated);
-        console.log(`[scss-auto-index] Eliminado: ${importLine}`);
+        if (updated === '') {
+            fs.unlinkSync(indexPath);
+            console.log(`[scss-auto-index] Eliminado _index.scss vacío en ${fileDir}`);
+        } else {
+            fs.writeFileSync(indexPath, updated + '\n');
+            console.log(`[scss-auto-index] Eliminado: ${importLine}`);
+        }
     }
 }
 
