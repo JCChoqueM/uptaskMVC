@@ -2,14 +2,14 @@
 
 namespace Controllers;
 
+use Model\Usuario;
 use MVC\Router;
 
 class LoginController
 {
+
     public static function login(Router $router)
     {
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         //Render a la vista
@@ -20,22 +20,38 @@ class LoginController
             ]
         );
     }
+
+
+
+
     public static function logout()
     {
         echo "Desde login";
     }
-
+    /* section  crear [inicio] */
     public static function crear(Router $router)
     {
+
+        $alertas = [];
+        $usuario = new Usuario;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usuario->sincronizar($_POST);
+            //debuguear($usuario);
+            $alertas = $usuario->validarNuevaCuenta();
+            //debuguear($alertas);
         }
         $router->render(
             'auth/crear',
             [
                 'titulo' => 'Crea tu cuenta en UpTask',
+                'usuario' => $usuario,
+                'alertas' => $alertas
             ]
         );
     }
+    /* !section  fin - crear [fin] */
+
     //Formulario de olvide mi password
     public static function olvide(Router $router)
     {
@@ -52,10 +68,10 @@ class LoginController
     //Colocar el nuevo password
     public static function reestablecer(Router $router)
     {
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
-          $router->render(
+        $router->render(
             'auth/reestablecer',
             [
                 'titulo' => 'Olvide mi password',
@@ -65,7 +81,7 @@ class LoginController
     //Muestra el mensaje de confirmación
     public static function mensaje(Router $router)
     {
-          $router->render(
+        $router->render(
             'auth/mensaje',
             [
                 'titulo' => 'Cuenta creada exitosamente',
@@ -75,7 +91,7 @@ class LoginController
 
     public static function confirmar(Router $router)
     {
-         $router->render(
+        $router->render(
             'auth/confirmar',
             [
                 'titulo' => 'Confirma tu cuenta UpTask',

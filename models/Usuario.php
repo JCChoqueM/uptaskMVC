@@ -27,4 +27,34 @@ class Usuario extends ActiveRecord
         $this->token = $args['token'] ?? '';
         $this->confirmado = $args['confirmado'] ?? 0;
     }
+
+
+    /* section1 validacion para cuetnas nuevas[inicio] */
+    public function validarNuevaCuenta()
+    {
+        if (!$this->nombre) {
+            self::$alertas['error'][] = 'El Nombre es Obligatorio';
+        }
+
+        if (!$this->email) {
+            self::$alertas['error'][] = 'El Email es Obligatorio';
+        }
+
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El Password no puede ir vacio';
+        }
+        if(strlen($this->password) < 6){
+            self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres';
+        }
+        if (!$this->password2) {
+            self::$alertas['error'][] = 'El Password2 no puede ir vacio';
+        }
+        if($this->password !== $this->password2){
+            self::$alertas['error'][] = 'Los Passwords no son iguales';
+        }
+
+
+        return self::$alertas;
+    }
+    /* !section1 fin - validacion para cuetnas nuevas[fin] */
 }

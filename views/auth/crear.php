@@ -4,6 +4,9 @@
     <!--section contenedor-sm -->
     <div class="contenedor-sm">
         <p class="descripcion-pagina">Crea tu cuenta en UpTask</p>
+
+        <?php include_once __DIR__ . '/../templates/alertas.php'; ?>
+
         <!-- BLOQUE formulario[inicio]-->
         <form action="/crear" method="POST" class="formulario">
             <!-- subBloque 1 nombre[inicio]-->
@@ -13,7 +16,8 @@
                     type="text"
                     id="nombre"
                     placeholder="Tu Nombre"
-                    name="nombre">
+                    name="nombre"
+                    value="<?php echo $usuario->nombre; ?>">
             </div>
             <!-- !subBloque 1 fin - nombre[fin]-->
 
@@ -24,7 +28,8 @@
                     type="email"
                     id="email"
                     placeholder="Tu Email"
-                    name="email">
+                    name="email"
+                    value="<?php echo $usuario->email; ?>">
             </div>
             <!-- !subBloque2 fin email - [fin]-->
 
