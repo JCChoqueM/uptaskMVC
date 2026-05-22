@@ -5,3 +5,9 @@
 @use 'mensaje';
 @use 'confirmar';
 
+@forward '_confirmar';
+@forward '_crear';
+@forward '_login';
+@forward '_mensaje';
+@forward '_olvide';
+@forward '_reestablecer';

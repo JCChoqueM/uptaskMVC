@@ -44,7 +44,8 @@ function watchDir(dir) {
 
         const filePath = path.join(dir, filename);
         const fileDir = path.dirname(filePath);
-        const fileName = path.basename(filename, '.scss');
+        const fileName = path.basename(filename, '.scss').replace(/^_/, '');
+        // _acciones.scss → 'acciones'
 
         if (event === 'rename') {
             if (fs.existsSync(filePath)) {
