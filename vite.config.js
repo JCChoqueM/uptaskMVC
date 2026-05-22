@@ -1,15 +1,14 @@
 import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
+import scssAutoIndex from './vite-plugins/scss-auto-index.js';
 
 export default defineConfig({
-    publicDir: false,    // ← aquí, fuera de build
+    publicDir: false,
     plugins: [
-        FullReload(['**/*.php'],
-            {
-                delay: 1000
-            }
-
-        )
+        scssAutoIndex('src/scss'),
+        FullReload(['**/*.php'], {
+            delay: 1000
+        })
     ],
     css: {
         devSourcemap: true,
