@@ -7,7 +7,6 @@
         <!-- BLOQUE formulario[inicio]-->
         <form action="/olvide" method="POST" class="formulario">
 
-
             <!-- subBloque2  email[inicio]-->
             <div class="campo">
                 <label for="email">Email</label>
