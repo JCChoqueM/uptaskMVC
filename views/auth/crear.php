@@ -1,3 +1,7 @@
+<?php
+/** @var \Model\Usuario $usuario */
+/** @var array $alertas */
+?>
 <div class="contenedor crear">
 
     <?php include_once __DIR__ . '/../templates/nombre-sitio.php'; ?>

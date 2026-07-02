@@ -13,9 +13,9 @@
     border-left: 0.5rem solid v.$rojo;
     color: v.$rojo;
   }
-  &.alerta-exito {
-    background-color: v.$verde;
-    color: v.$blanco;
+  &.exito {
+   background: color.adjust(v.$verde, $lightness: 60%);
     border-left: 0.5rem solid v.$verde;
+    color: v.$verde;
   }
 }

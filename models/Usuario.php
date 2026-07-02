@@ -53,4 +53,19 @@ class Usuario extends ActiveRecord
         return self::$alertas;
     }
     /* !section1 fin - validacion para cuetnas nuevas[fin] */
+
+
+    /* SECTION  hashea el password[inicio] */
+    public function hashPassword()
+    {
+        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+    }
+    /* !SECTION  fin - hashea el password[fin] */
+
+    /* section1 generar un token[inicio] */
+    public function crearToken()
+    {
+        $this->token = uniqid();  //tb se puede poner md5(uniqueid()); que genera 32 caracteres pero en bd esta configurado con 15 
+    }
+    /* !section1 fin - generar un token[fin] */
 }

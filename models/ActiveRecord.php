@@ -9,6 +9,7 @@ class ActiveRecord {
 
     // Alertas y Mensajes
     protected static $alertas = [];
+    public $id = null;
     
     // Definir la conexión a la BD - includes/database.php
     public static function setDB($database) {
@@ -62,6 +63,9 @@ class ActiveRecord {
     }
 
     // Busqueda Where con Columna 
+    /**
+ * @return static|false
+ */
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
@@ -165,7 +169,7 @@ class ActiveRecord {
         $atributos = $this->atributos();
         $sanitizado = [];
         foreach($atributos as $key => $value ) {
-            $sanitizado[$key] = self::$db->escape_string($value);
+            $sanitizado[$key] = self::$db->escape_string( (string) ($value ?? '') );
         }
         return $sanitizado;
     }
