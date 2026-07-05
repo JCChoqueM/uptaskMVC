@@ -26,6 +26,29 @@ class Usuario extends ActiveRecord
         $this->confirmado = $args['confirmado'] ?? 0;
     }
 
+    /* section4 validar el login de Usuario[inicio] */
+    public function validarLogin()
+    {
+
+
+        if (!$this->email) {
+            self::$alertas['error'][] = 'El Email es Obligatorio';
+        }
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = 'Email no valido';
+        }
+
+
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El Password no puede ir vacio';
+        }
+
+        return self::$alertas;
+
+    }
+    /* !section4 fin - validar el login de Usuario[fin] */
+
+
     /* section1 validacion para cuetnas nuevas[inicio] */
     public function validarNuevaCuenta()
     {
@@ -72,7 +95,8 @@ class Usuario extends ActiveRecord
 
     /* section3 validarPassword[inicio] */
 
-    public function validarPassword(){
+    public function validarPassword()
+    {
         if (!$this->password) {
             self::$alertas['error'][] = 'El Password no puede ir vacio';
         }

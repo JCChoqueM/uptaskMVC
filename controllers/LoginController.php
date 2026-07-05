@@ -11,13 +11,48 @@ class LoginController
 
     public static function login(Router $router)
     {
+        $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usuario = new Usuario($_POST);
+
+            $alertas = $usuario->validarLogin();
+            // debuguear($usuario);
+            if (empty($alertas)) {
+                //Verificar que exista el usuario
+                $usuario = Usuario::where('email', $usuario->email);
+
+                if (!$usuario || !$usuario->confirmado) {
+                    Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
+                } else {
+                    //el usuario existe
+                    if (password_verify($_POST['password'], $usuario->password)) {
+                        //Iniciar la sesion
+                        session_start();
+                        $_SESSION['id'] = $usuario->id;
+                        $_SESSION['nombre'] = $usuario->nombre;
+                        $_SESSION['email'] = $usuario->email;
+                        $_SESSION['login'] = true;
+                        //  debuguear($_SESSION);
+
+                        //redirect
+                        header('Location: /proyectos');
+
+                    } else {
+                        Usuario::setAlerta('error', 'Password incorrecto');
+                    }
+                }
+                // debuguear($usuario);
+
+            }
+
         }
+        $alertas = Usuario::getAlertas();
         //Render a la vista
         $router->render(
             'auth/login',
             [
-                'titulo' => 'Iniciar Sesión'
+                'titulo' => 'Iniciar Sesión',
+                'alertas' => $alertas
             ]
         );
     }
@@ -155,17 +190,17 @@ class LoginController
             //Validar el password
             $alertas = $usuario->validarPassword();
 
-            if(empty($alertas)){
+            if (empty($alertas)) {
                 //hashear el nuevo password
                 $usuario->hashPassword();
-                
+
                 //Eliminar el token
                 $usuario->token = null;
 
                 //Guardar el usuario en la BD
                 $resultado = $usuario->guardar();
                 //Redireccionar
-                if($resultado){
+                if ($resultado) {
                     header('Location: /');
                 }
 

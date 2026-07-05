@@ -4,8 +4,10 @@
     <!--section contenedor-sm -->
     <div class="contenedor-sm">
         <p class="descripcion-pagina">Iniciar Sesión</p>
+<?php include_once __DIR__ . '/../templates/alertas.php';?>
+
         <!-- BLOQUE formulario[inicio]-->
-        <form action="/" method="POST" class="formulario">
+        <form action="/" method="POST" class="formulario" novalidate>
             <!-- subBloque  email[inicio]-->
             <div class="campo">
                 <label for="email">Email</label>
