@@ -40,19 +40,48 @@ class Usuario extends ActiveRecord
         if (!$this->password) {
             self::$alertas['error'][] = 'El Password no puede ir vacio';
         }
-        if(strlen($this->password) < 6){
+        if (strlen($this->password) < 6) {
             self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres';
         }
         if (!$this->password2) {
             self::$alertas['error'][] = 'El Password2 no puede ir vacio';
         }
-        if($this->password !== $this->password2){
+        if ($this->password !== $this->password2) {
             self::$alertas['error'][] = 'Los Passwords no son iguales';
         }
 
         return self::$alertas;
     }
     /* !section1 fin - validacion para cuetnas nuevas[fin] */
+
+    /* section2 valida un email[inicio] */
+
+    public function validarEmail()
+    {
+        if (!$this->email) {
+            self::$alertas['error'][] = 'El Email es Obligatorio';
+        }
+
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = 'Email no valido';
+        }
+        return self::$alertas;
+    }
+
+    /* !section2 fin - valida un email[fin] */
+
+    /* section3 validarPassword[inicio] */
+
+    public function validarPassword(){
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El Password no puede ir vacio';
+        }
+        if (strlen($this->password) < 6) {
+            self::$alertas['error'][] = 'El Password debe contener al menos 6 caracteres';
+        }
+        return self::$alertas;
+    }
+    /* !section3 fin - validarPassword[fin] */
 
 
     /* SECTION  hashea el password[inicio] */

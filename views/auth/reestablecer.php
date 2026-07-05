@@ -1,28 +1,28 @@
 <div class="contenedor reestablecer">
-   
-<?php include_once __DIR__ . '/../templates/nombre-sitio.php';?>
+
+    <?php include_once __DIR__ . '/../templates/nombre-sitio.php'; ?>
     <!--section contenedor-sm -->
     <div class="contenedor-sm">
         <p class="descripcion-pagina">Coloca tu nuevo password</p>
-        <!-- BLOQUE formulario[inicio]-->
-        <form action="/reestablecer" method="POST" class="formulario">
-            
+        <?php include_once __DIR__ . '/../templates/alertas.php'; ?>
 
-            <!-- subBloque2  Password[inicio] -->
-            <div class="campo">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Tu Password"
-                    name="password">
-            </div>
-            <!-- !subBloque2  fin - Password[fin] -->
 
-            <input type="submit" class="boton" value="Guardar Password">
-        </form>
-        <!-- !BLOQUE fin - formulario[fin]-->
+        <?php if ($mostrar) { ?>
+            <!-- BLOQUE formulario[inicio]-->
+            <form  method="POST" class="formulario">
 
+
+                <!-- subBloque2  Password[inicio] -->
+                <div class="campo">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Tu Password" name="password">
+                </div>
+                <!-- !subBloque2  fin - Password[fin] -->
+
+                <input type="submit" class="boton" value="Guardar Password">
+            </form>
+            <!-- !BLOQUE fin - formulario[fin]-->
+        <?php } ?>
     </div>
 
     <!-- section2 enlaces[inicio] -->
