@@ -23,7 +23,8 @@
       font-weight: bold;
       font-size: 1.2rem;
 
-      &:hover {
+      &:hover,
+      &.activo {
         background-color: color.adjust(v.$indigo, $lightness: -20%);
         border-radius: 0.5rem;
       }
