@@ -1,3 +1,2 @@
 import '../scss/app.scss'
-
-import './paginas/login.js'
+ import './tareas.js'

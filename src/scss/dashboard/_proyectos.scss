@@ -26,7 +26,7 @@
     align-items: center;
     padding: 2rem;
     line-height: 2;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 
     &:hover {
       background-color: color.adjust(v.$indigo, $lightness: -5%);
