@@ -50,16 +50,7 @@ services:
     networks:
       - uptask_network
     restart: unless-stopped
-    command: >
-      bash -c "
-        if [ -f '/docker-entrypoint-initdb.d/host/uptask_db.sql' ]; then
-          echo '>>> SQL encontrado, copiando...' &&
-          cp /docker-entrypoint-initdb.d/host/uptask_db.sql /docker-entrypoint-initdb.d/uptask_db.sql
-        else
-          echo '>>> Sin SQL, iniciando con base de datos vacía'
-        fi &&
-        docker-entrypoint.sh mysqld
-      "
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
 
 volumes:
   uptask_mysql_data:
