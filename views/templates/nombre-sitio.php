@@ -1,2 +1,2 @@
- <h1 class="uptask">UpTask</h1>
-    <p class="tagline">Crea y administra tus proyectos </p>
+ <h1 class="uptask">SantiTask</h1>
+    <p class="tagline">Crea y administra tus tareas </p>
