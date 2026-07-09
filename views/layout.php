@@ -22,10 +22,9 @@ if (!$isDev) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Open+Sans&display=swap" rel="stylesheet">
     <?php if ($isDev): ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
-        <script type="module" src="http://localhost:5173/src/js/app.js"></script>
+        <link rel="stylesheet" href="http://localhost:5173/src/scss/app.scss">
     <?php else: ?>
         <link rel="stylesheet" href="/build/<?= $manifest['src/scss/app.scss']['file'] ?? '' ?>">
-        <script src="/build/<?= $manifest['src/js/app.js']['file'] ?? '' ?>"></script>
     <?php endif ?>
 </head>
 <body>

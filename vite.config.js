@@ -1,6 +1,18 @@
 import { defineConfig } from 'vite';
 import FullReload from 'vite-plugin-full-reload';
 import scssAutoIndex from './vite-plugins/scss-auto-index.js';
+import fg from 'fast-glob';
+
+// Busca cualquier .js en src/js/ y sus subcarpetas,
+// EXCEPTO los que estén dentro de "modules/" (esos son solo para import)
+const jsEntries = fg.sync([
+    'src/js/**/*.js',
+    '!src/js/modules/**'
+]).reduce((entries, file) => {
+    const nombre = file.replace('src/js/', '').replace('.js', '');
+    entries[nombre] = file;
+    return entries;
+}, {});
 
 export default defineConfig({
     publicDir: false,
@@ -35,7 +47,7 @@ export default defineConfig({
         sourcemap: true,
         rollupOptions: {
             input: {
-                app: 'src/js/app.js',
+                ...jsEntries,
                 styles: 'src/scss/app.scss'
             }
         }

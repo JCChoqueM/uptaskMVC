@@ -18,3 +18,16 @@ function isAuth() : void {
         header('Location: /');
     }
 }
+
+function vite_script($archivo) {
+    $isDev = ($_ENV['ENVIRONMENT'] ?? 'development') === 'development';
+
+    if ($isDev) {
+        return "<script type=\"module\" src=\"http://localhost:5173/{$archivo}\"></script>";
+    }
+
+    $manifest = json_decode(file_get_contents(__DIR__ . '/../public/build/.vite/manifest.json'), true);
+    $file = $manifest[$archivo]['file'] ?? '';
+
+    return "<script type=\"module\" src=\"/build/{$file}\"></script>";
+}

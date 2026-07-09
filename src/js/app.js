@@ -1,2 +1,1 @@
-import '../scss/app.scss'
- import './tareas.js'
+import './modules/naris.js';

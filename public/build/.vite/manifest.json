@@ -1,12 +1,33 @@
 {
   "src/js/app.js": {
-    "file": "assets/app-DJb3eE8l.js",
+    "file": "assets/app-O5_iwBUm.js",
     "name": "app",
     "src": "src/js/app.js",
-    "isEntry": true,
-    "css": [
-      "assets/styles-CWsOUE82.css"
-    ]
+    "isEntry": true
+  },
+  "src/js/espalda/espalda.js": {
+    "file": "assets/espalda/espalda-D7PAzf7A.js",
+    "name": "espalda/espalda",
+    "src": "src/js/espalda/espalda.js",
+    "isEntry": true
+  },
+  "src/js/marucha.js": {
+    "file": "assets/marucha-DmJXA_IM.js",
+    "name": "marucha",
+    "src": "src/js/marucha.js",
+    "isEntry": true
+  },
+  "src/js/sangano.js": {
+    "file": "assets/sangano-BZKcGGBv.js",
+    "name": "sangano",
+    "src": "src/js/sangano.js",
+    "isEntry": true
+  },
+  "src/js/tareas.js": {
+    "file": "assets/tareas-DW472sIL.js",
+    "name": "tareas",
+    "src": "src/js/tareas.js",
+    "isEntry": true
   },
   "src/scss/app.scss": {
     "file": "assets/styles-CWsOUE82.css",

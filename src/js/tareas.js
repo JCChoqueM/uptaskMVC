@@ -1,2 +1,2 @@
-const hola2 = 'hol 121a mundo2212';
+const hola2 = 'maria';
 console.log(hola2)
