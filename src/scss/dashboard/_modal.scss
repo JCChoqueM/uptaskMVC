@@ -31,6 +31,13 @@
       display: block;
     }
 
+    input[type="text"] {
+      border: 1px solid v.$gris;
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+
+
     .opciones {
       display: flex;
       justify-content: space-between;

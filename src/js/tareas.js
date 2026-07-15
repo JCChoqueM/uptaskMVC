@@ -41,14 +41,62 @@
       e.preventDefault();
       if (e.target.classList.contains('cerrar-modal')) {
         const formulario = document.querySelector('.formulario');
-   
+
         formulario.classList.add('cerrar');
         setTimeout(() => {
           modal.remove();
         }, 500);
       }
+      if (e.target.classList.contains('submit-nueva-tarea')) {
+        submitFormularioNuevaTera();
+      }
     });
 
-    document.querySelector('body').appendChild(modal);
+    document.querySelector('.dashboard').appendChild(modal);
+  }
+  function submitFormularioNuevaTera() {
+    const tarea = document.querySelector('#tarea').value.trim();
+    // console.log(tarea)
+
+    if (tarea === '') {
+      //Mostrar una alerta de error
+      mostrarAlerta('El Nombre de la Tarea es Obligatorio', 'error', document.querySelector('.formulario legend'));
+      return;
+    }
+
+    // console.log('Despues del if');
+    agregarTarea(tarea);
+  }
+  /**
+
+
+ * @param {HTMLElement} referencia
+ */
+  //Muestra un mensaje en la interfaz
+  function mostrarAlerta(mensaje, tipo, referencia) {
+    //Previene la creacion de multiples alertas
+    const alertaPrevia = document.querySelector('.alerta');
+    if (alertaPrevia) {
+      alertaPrevia.remove();
+    }
+    const alerta = document.createElement('DIV');
+    alerta.classList.add('alerta', tipo);
+    alerta.textContent = mensaje;
+    //Inserta la alerta antes de legend
+    referencia.parentElement.insertBefore(alerta, referencia.nextSibling);
+    //Elimina la alerta
+    setTimeout(() => {
+      alerta.remove();
+    }, 3000);
+  }
+
+
+  //Consultar el Servidor para añadir una nueva tarea al proyecto actual
+  function agregarTarea(tarea) {
+    const tareaHTML = document.createElement('P');
+    tareaHTML.textContent = tarea;
+    tareaHTML.classList.add('tarea');
+    const listado = document.querySelector('.listado-pendientes ul');
+    listado.appendChild(tareaHTML);
   }
 })();
