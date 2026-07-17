@@ -8,6 +8,12 @@
             id="agregar-tarea"
         >&#43; Nueva Tarea</button>
     </div>
+
+    <ul
+        class="listado-tareas"
+        id="listado-tareas"
+    ></ul>
+
 </div>
 
 
@@ -15,6 +21,6 @@
 
 <?php
 $script = vite_script('src/js/tareas.js');
-$script .= vite_script('src/js/app.js');
+
 
 ?>

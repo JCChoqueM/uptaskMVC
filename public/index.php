@@ -35,18 +35,18 @@ $router->get('/confirmar', [LoginController::class, 'confirmar']);
 
 
 //ZONA DE PROYECTOS
-$router->get('/dashboard', [DashboardController::class,'index']);
-$router->get('/crear-proyecto', [DashboardController::class,'crear_proyecto']);
-$router->post('/crear-proyecto', [DashboardController::class,'crear_proyecto']);
-$router->get('/proyecto', [DashboardController::class,'proyecto']);
-$router->get('/perfil', [DashboardController::class,'perfil']);
+$router->get('/dashboard', [DashboardController::class, 'index']);
+$router->get('/crear-proyecto', [DashboardController::class, 'crear_proyecto']);
+$router->post('/crear-proyecto', [DashboardController::class, 'crear_proyecto']);
+$router->get('/proyecto', [DashboardController::class, 'proyecto']);
+$router->get('/perfil', [DashboardController::class, 'perfil']);
 
 
 //API para las tareas
-$router->get('/tareas', [TareaController::class,'index']);
-$router->post('/api/tarea', [TareaController::class,'crear']);
-$router->post('/api/tarea/actualizar', [TareaController::class,'actualizar']);
-$router->post('/api/tarea/eliminar', [TareaController::class,'eliminar']);
+$router->get('/api/tareas', [TareaController::class, 'index']);
+$router->post('/api/tarea', [TareaController::class, 'crear']);
+$router->post('/api/tarea/actualizar', [TareaController::class, 'actualizar']);
+$router->post('/api/tarea/eliminar', [TareaController::class, 'eliminar']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador

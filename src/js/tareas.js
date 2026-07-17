@@ -1,7 +1,46 @@
 (function () {
+  obtenerTareas();
   //Botón para mostrar el Modal de Agregar Tarea
   const nuevaTareaBtn = document.querySelector('#agregar-tarea');
   nuevaTareaBtn.addEventListener('click', mostrarFormulario);
+
+  async function obtenerTareas() {
+    try {
+      const id = obtenerProyecto();
+      const url = `/api/tareas?id=${id}`;
+      const respuesta = await fetch(url);
+      const resultado = await respuesta.json();
+      const { tareas } = resultado;
+
+      // console.log(tareas);
+      mostrarTareas(tareas);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function mostrarTareas(tareas) {
+    if (tareas.length === 0) {
+      const contenedorTareas = document.querySelector('#listado-tareas');
+      const textoNoTareas = document.createElement('LI');
+      textoNoTareas.textContent = 'No Hay Tareas En Este Proyecto';
+      textoNoTareas.classList.add('no-tareas');
+      contenedorTareas.appendChild(textoNoTareas);
+      return;
+    }
+    tareas.forEach((tarea) => {
+      const contenedorTarea = document.createElement('LI');
+      
+      contenedorTarea.dataset.tareaId = tarea.id;
+      contenedorTarea.classList.add('tarea');
+
+      const nombreTarea = document.createElement('P');
+      nombreTarea.textContent = tarea.nombre;
+      console.log('nombreTarea', nombreTarea)
+   
+    
+    });
+  }
 
   function mostrarFormulario() {
     const modal = document.createElement('DIV');

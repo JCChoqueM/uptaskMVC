@@ -16,8 +16,6 @@
 <?php include_once __DIR__ . '/footer-dashboard.php' ?>
 <?php
 
-$script .= vite_script('src/js/tareas.js');
-$script .= vite_script('src/js/sangano.js');
-$script .= vite_script('src/js/espalda/espalda.js');
-$script .= vite_script('src/js/app.js');
+
+
 ?>
