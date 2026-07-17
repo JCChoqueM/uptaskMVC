@@ -44,9 +44,9 @@ $router->get('/perfil', [DashboardController::class,'perfil']);
 
 //API para las tareas
 $router->get('/tareas', [TareaController::class,'index']);
-$router->post('/tarea', [TareaController::class,'crear']);
-$router->post('/tarea/actualizar', [TareaController::class,'actualizar']);
-$router->post('/tarea/eliminar', [TareaController::class,'eliminar']);
+$router->post('/api/tarea', [TareaController::class,'crear']);
+$router->post('/api/tarea/actualizar', [TareaController::class,'actualizar']);
+$router->post('/api/tarea/eliminar', [TareaController::class,'eliminar']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador

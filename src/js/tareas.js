@@ -90,13 +90,36 @@
     }, 3000);
   }
 
-
   //Consultar el Servidor para añadir una nueva tarea al proyecto actual
-  function agregarTarea(tarea) {
-    const tareaHTML = document.createElement('P');
-    tareaHTML.textContent = tarea;
-    tareaHTML.classList.add('tarea');
-    const listado = document.querySelector('.listado-pendientes ul');
-    listado.appendChild(tareaHTML);
+  async function agregarTarea(tarea) {
+    //Contruir la petiión
+    const datos = new FormData();
+    datos.append('nombre', tarea);
+    datos.append('proyectoId', obtenerProyecto());
+
+    try {
+      const url = '/api/tarea';
+      const respuesta = await fetch(url, {
+        method: 'POST',
+        body: datos,
+      });
+      const resultado = await respuesta.json();
+      console.log(resultado);
+
+      mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario legend'));
+      if (resultado.tipo === 'exito') {
+        const modal = document.querySelector('.modal');
+        setTimeout(() => {
+          modal.remove();
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function obtenerProyecto() {
+    const proyectoParams = new URLSearchParams(window.location.search);
+    const proyecto = Object.fromEntries(proyectoParams.entries()); //id del proyecto  actual
+    return proyecto.id;
   }
 })();
