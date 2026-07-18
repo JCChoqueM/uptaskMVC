@@ -8,11 +8,13 @@
             id="agregar-tarea"
         >&#43; Nueva Tarea</button>
     </div>
-
+    <!-- section espacio para mostrar las tareas[inicio]  -->
     <ul
         class="listado-tareas"
         id="listado-tareas"
     ></ul>
+    <!-- !section fin - espacio para mostrar las tareas[fin]  -->
+
 
 </div>
 
