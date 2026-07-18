@@ -1,5 +1,6 @@
 (function () {
   obtenerTareas();
+  let tareas = [];
   //Botón para mostrar el Modal de Agregar Tarea
   const nuevaTareaBtn = document.querySelector('#agregar-tarea');
   nuevaTareaBtn.addEventListener('click', mostrarFormulario);
@@ -10,16 +11,16 @@
       const url = `/api/tareas?id=${id}`;
       const respuesta = await fetch(url);
       const resultado = await respuesta.json();
-      const { tareas } = resultado;
 
-      // console.log(tareas);
-      mostrarTareas(tareas);
+      tareas = resultado.tareas;
+      mostrarTareas();
     } catch (error) {
       console.log(error);
     }
   }
 
-  function mostrarTareas(tareas) {
+  function mostrarTareas() {
+    limpiarTareas();
     if (tareas.length === 0) {
       const contenedorTareas = document.querySelector('#listado-tareas');
       const textoNoTareas = document.createElement('LI');
@@ -169,14 +170,24 @@
         body: datos,
       });
       const resultado = await respuesta.json();
-      console.log(resultado);
 
       mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario legend'));
       if (resultado.tipo === 'exito') {
         const modal = document.querySelector('.modal');
         setTimeout(() => {
           modal.remove();
-        }, 3000);
+        }, 1000); //tiempo de mensaje creado tarea
+
+        //Agregar el objeto de tarea al global de tareas
+        const tareaObj = {
+          id: String(resultado.id),
+          nombre: tarea,
+          estado: '0',
+          proyectoID: resultado.proyectoId,
+        };
+
+        tareas = [...tareas, tareaObj];
+        mostrarTareas();
       }
     } catch (error) {
       console.log(error);
@@ -186,5 +197,14 @@
     const proyectoParams = new URLSearchParams(window.location.search);
     const proyecto = Object.fromEntries(proyectoParams.entries()); //id del proyecto  actual
     return proyecto.id;
+  }
+
+  function limpiarTareas() {
+    const listadoTareas = document.querySelector('#listado-tareas');
+    // listadoTareas.innerHTML = '';
+
+    while (listadoTareas.firstChild) {
+      listadoTareas.removeChild(listadoTareas.firstChild);
+    }
   }
 })();
