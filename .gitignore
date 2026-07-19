@@ -2,5 +2,6 @@ vendor
 node_modules
 includes/.env
 .vscode
+.poolside/
 FETCH_HEAD
 .env
