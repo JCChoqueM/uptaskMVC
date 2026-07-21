@@ -1,1 +1,0 @@
-{"version":3,"file":"tareas-DW472sIL.js","sources":["../../../src/js/tareas.js"],"sourcesContent":["const hola2 = 'maria';\nconsole.log(hola2)"],"names":["hola2"],"mappings":"AAAA,MAAMA,EAAQ,QACd,QAAQ,IAAIA,CAAK"}
