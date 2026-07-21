@@ -1,6 +1,7 @@
 <?php
 
-function debuguear($variable) : string {
+function debuguear($variable): string
+{
     echo "<pre>";
     var_dump($variable);
     echo "</pre>";
@@ -8,18 +9,26 @@ function debuguear($variable) : string {
 }
 
 // Escapa / Sanitizar el HTML
-function s($html) : string {
+function s($html): string
+{
     return htmlspecialchars($html);
 }
 
 // Función que revisa que el usuario este autenticado
-function isAuth() : void {
-    if(!isset($_SESSION['login'])) {
+function isAuth(): void
+{
+    if (!isset($_SESSION['login'])) {
         header('Location: /');
     }
 }
 
-function vite_script($archivo) {
+function vite_script($archivo)
+{
+    // Si es una URL externa (CDN, etc.), se devuelve directo
+    if (preg_match('/^https?:\/\//', $archivo)) {
+        return "<script src=\"{$archivo}\"></script>";
+    }
+
     $isDev = ($_ENV['ENVIRONMENT'] ?? 'development') === 'development';
 
     if ($isDev) {

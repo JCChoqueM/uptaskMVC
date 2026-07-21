@@ -23,6 +23,7 @@
 
 <?php
 $script = vite_script('src/js/tareas.js');
+$script .= vite_script('https://cdn.jsdelivr.net/npm/sweetalert2@11');
 
 
 ?>
