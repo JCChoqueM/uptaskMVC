@@ -243,20 +243,30 @@
 
   function confirmarEliminarTarea(tarea) {
     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) Swal.fire({
-    title: "Deleted!",
-    text: "Your file has been deleted.",
-    icon: "success"
-  });
-});
+      title: '¿Eliminar tarea?',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar!',
+      // text: 'No se podra revertir!',
+      // icon: 'warning',
+      // confirmButtonColor: '#3085d6',
+      // cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        eliminarTarea(tarea);
+      }
+      // Swal.fire({
+      //   title: 'Eliminado!',
+      //   text: 'La tarea a sido eliminada.',
+      //   icon: 'success',
+      // });
+    });
+  }
+  async function eliminarTarea(tarea) {
+    const datos = new FormData();
+    try {
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function obtenerProyecto() {
