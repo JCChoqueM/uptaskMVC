@@ -1,0 +1,88 @@
+// Estilos para el tour interactivo con Driver.js
+@use 'base/variables' as v;
+
+// El CSS de Driver.js se importa desde el módulo JS, pero podemos personalizar
+.driver-popover {
+  background: v.$blanco !important;
+  border-radius: 0.8rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.driver-popover-title {
+  color: v.$indigo !important;
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+}
+
+.driver-popover-description {
+  color: v.$negro !important;
+  font-size: 1.2rem !important;
+}
+
+.driver-prev-btn, 
+.driver-next-btn {
+  background-color: v.$indigo !important;
+  border-radius: 0.5rem !important;
+  color: v.$blanco !important;
+}
+
+.driver-close-btn {
+  color: v.$gris !important;
+}
+
+.driver-progress-text {
+  color: v.$indigo !important;
+}
+
+.driver-highlighted-element {
+  box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.5) !important;
+  border-radius: 0.5rem !important;
+}
+
+// Botón del tour en sidebar
+.boton-tour {
+  background-color: v.$indigo;
+  color: v.$blanco;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  width: 100%;
+  margin-top: 2rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #3730a3; // indigo más oscuro
+  }
+}
+
+// Botón móvil del tour
+.tour-btn-mobile {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: auto;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: none;
+  z-index: 1000;
+  background-color: v.$indigo;
+  color: v.$blanco;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #3730a3;
+  }
+}
+
+// Mostrar botón móvil en pantallas pequeñas
+@media (max-width: 768px) {
+  .tour-btn-mobile {
+    display: block;
+  }
+}

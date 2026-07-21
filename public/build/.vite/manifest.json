@@ -5,14 +5,35 @@
     "src": "src/js/app.js",
     "isEntry": true
   },
+  "src/js/dashboard/tour.js": {
+    "file": "assets/dashboard/tour-BR6R5ON5.js",
+    "name": "dashboard/tour",
+    "src": "src/js/dashboard/tour.js",
+    "isEntry": true,
+    "css": [
+      "assets/tour-CTZuBZOi.css"
+    ]
+  },
+  "src/js/espalda/espalda.js": {
+    "file": "assets/espalda/espalda-UOhjg-4k.js",
+    "name": "espalda/espalda",
+    "src": "src/js/espalda/espalda.js",
+    "isEntry": true
+  },
+  "src/js/paginas/login.js": {
+    "file": "assets/paginas/login-l0sNRNKZ.js",
+    "name": "paginas/login",
+    "src": "src/js/paginas/login.js",
+    "isEntry": true
+  },
   "src/js/tareas.js": {
-    "file": "assets/tareas-kZrIxT5J.js",
+    "file": "assets/tareas-CT4lDB1o.js",
     "name": "tareas",
     "src": "src/js/tareas.js",
     "isEntry": true
   },
   "src/scss/app.scss": {
-    "file": "assets/styles-BEh_rbAO.css",
+    "file": "assets/styles-Cwk0hCcQ.css",
     "src": "src/scss/app.scss",
     "isEntry": true
   }

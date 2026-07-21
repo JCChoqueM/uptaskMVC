@@ -1,0 +1,1 @@
+{"version":3,"file":"espalda-UOhjg-4k.js","sources":["../../../../src/js/espalda/espalda.js"],"sourcesContent":["const hola2 = 'espasaslda';\nconsole.log(hola2)"],"names":["hola2"],"mappings":"AAAA,MAAMA,EAAQ,aACd,QAAQ,IAAIA,CAAK"}
