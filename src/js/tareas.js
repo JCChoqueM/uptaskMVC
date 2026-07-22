@@ -3,7 +3,9 @@
   let tareas = [];
   //Botón para mostrar el Modal de Agregar Tarea
   const nuevaTareaBtn = document.querySelector('#agregar-tarea');
-  nuevaTareaBtn.addEventListener('click', mostrarFormulario);
+  nuevaTareaBtn.addEventListener('click', function () {
+    mostrarFormulario();
+  });
 
   async function obtenerTareas() {
     try {
@@ -43,6 +45,11 @@
       const nombreTarea = document.createElement('P');
       nombreTarea.textContent = tarea.nombre;
 
+      //editar nombre de la tarea
+      nombreTarea.ondblclick = function () {
+        mostrarFormulario(true, { ...tarea });
+      };
+
       const opcionesDiv = document.createElement('DIV');
       opcionesDiv.classList.add('opciones');
 
@@ -77,19 +84,21 @@
     });
   }
 
-  function mostrarFormulario() {
+  function mostrarFormulario(editar = false, tarea = {}) {
+  
     const modal = document.createElement('DIV');
     modal.classList.add('modal');
     modal.innerHTML = `
             <form class="formulario nueva-tarea">
-                <legend>Añade una nueva tarea</legend>
+                <legend>${editar ? 'Editar Tarea' : 'Añade una nueva tarea'}</legend>
                 <div class="campo">
                     <label for="tarea">Tarea</label>
                     <input
                         type="text"
                         name="tarea"
-                        placeholder="Añadir Tarea al Proyecto Actual"
+                        placeholder="${tarea.nombre ? 'Editar Tarea' : 'Añadir Tarea al Proyecto Actual'}"
                         id="tarea"
+                        value="${tarea.nombre ? tarea.nombre : ''}"
                     />
                 </div>
                 <div class="opciones">
@@ -97,7 +106,7 @@
                     <input
                         type="submit"
                         class="submit-nueva-tarea"
-                        value="Añadir Tarea"
+                        value="${tarea.nombre ? 'Guardar Cambios' : 'Añadir Tarea '}"
                     />
 
                 <button type="button" class="cerrar-modal">Cancelar</button>
@@ -122,25 +131,24 @@
         }, 500);
       }
       if (e.target.classList.contains('submit-nueva-tarea')) {
-        submitFormularioNuevaTera();
+        const nombreTarea = document.querySelector('#tarea').value.trim();
+
+        if (nombreTarea === '') {
+          mostrarAlerta('El Nombre de la Tarea es Obligatorio', 'error', document.querySelector('.formulario legend'));
+          return;
+        }
+        if (editar) {
+          tarea.nombre = nombreTarea;
+          actualizarTarea(tarea);
+        } else {
+          agregarTarea(nombreTarea);
+        }
       }
     });
 
     document.querySelector('.dashboard').appendChild(modal);
   }
-  function submitFormularioNuevaTera() {
-    const tarea = document.querySelector('#tarea').value.trim();
-    // console.log(tarea)
 
-    if (tarea === '') {
-      //Mostrar una alerta de error
-      mostrarAlerta('El Nombre de la Tarea es Obligatorio', 'error', document.querySelector('.formulario legend'));
-      return;
-    }
-
-    // console.log('Despues del if');
-    agregarTarea(tarea);
-  }
   /**
 
 
@@ -225,17 +233,26 @@
       });
       const resultado = await respuesta.json();
       if (resultado.respuesta.tipo === 'exito') {
-        mostrarAlerta(resultado.respuesta.mensaje, resultado.respuesta.tipo, document.querySelector('.contenedor-nueva-tarea'));
-      }
-
-      tareas = tareas.map((tareaMemoria) => {
-        if (tareaMemoria.id === id) {
-          tareaMemoria.estado = estado;
+        // prettier-ignore
+        Swal.fire(
+          resultado.respuesta.mensaje, 
+          resultado.respuesta.mensaje, 
+          'success'
+        );
+        const modal = document.querySelector('.modal');
+        if (modal) {
+          modal.remove();
         }
-        return tareaMemoria;
-      });
+        tareas = tareas.map((tareaMemoria) => {
+          if (tareaMemoria.id === id) {
+            tareaMemoria.estado = estado;
+            tareaMemoria.nombre = nombre;
+          }
+          return tareaMemoria;
+        });
 
-      mostrarTareas();
+        mostrarTareas();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -278,11 +295,11 @@
       if (resultado.resultado) {
         // mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.contenedor-nueva-tarea'));
         // Swal.fire('eliminado', resultado.mensaje, 'success');
-         Swal.fire({
-        title: 'Eliminado!',
-        text: resultado.mensaje,
-        icon: 'success',
-      });
+        Swal.fire({
+          title: 'Eliminado!',
+          text: resultado.mensaje,
+          icon: 'success',
+        });
       }
       //Virtual DOM
       tareas = tareas.filter((tareaMemoria) => tareaMemoria.id !== tarea.id);
