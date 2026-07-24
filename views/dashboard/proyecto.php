@@ -66,11 +66,11 @@
 </div>
 
 
-<?php include_once __DIR__ . '/footer-dashboard.php' ?>
-
 <?php
-$script = vite_script('src/js/tareas.js');
+$script = '';
+$script .= vite_script('src/js/tareas.js');
 $script .= vite_script('https://cdn.jsdelivr.net/npm/sweetalert2@11');
-
-
+include_once __DIR__ . '/footer-dashboard.php'
 ?>
+
+<!-- scripts moved above -->
